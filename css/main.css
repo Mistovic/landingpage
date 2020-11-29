@@ -9,6 +9,14 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+a,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: #1d1a1a;
+}
+
 h1,
 h2,
 h3,
@@ -29,11 +37,21 @@ h2 {
 p {
   font-size: 18px;
   font-weight: 400;
+  margin-bottom: 24px;
 }
 
 .wrapper {
   padding-left: 16px;
   padding-right: 16px;
+  margin: 0 auto;
+}
+
+.separator {
+  width: 100%;
+  max-width: 187px;
+  height: 1px;
+  background: #ddd;
+  margin: 50px auto 37px;
 }
 
 #page {
@@ -41,7 +59,13 @@ p {
 }
 
 .bg-image {
-  text-align: center;
+  background-image: url("../PNG/Illustration_Mobile.png");
+}
+
+@media screen and (max-width: 420px) {
+  #hero .bg-image {
+    padding-bottom: 80%;
+  }
 }
 
 section {
@@ -56,7 +80,7 @@ section {
 }
 
 #hero h1 {
-  color: #ff00ff;
+  color: #ff00ffd3;
   text-align: center;
   line-height: 61px;
 }
@@ -65,18 +89,29 @@ section {
   color: white;
   text-align: center;
   font-weight: 300;
+  margin-bottom: 40px;
+  font-size: 20px;
 }
 
-.img, .img-1, .img-2 {
+#hero .btn-link {
+  color: #00ffff;
+}
+
+section:not(#hero) .btn-link {
+  margin-left: 0;
+}
+
+.img, .bg-image, .img-1, .img-2 {
   width: 100%;
   padding-bottom: 71%;
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -webkit-filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
   overflow: hidden;
   background-position: center center;
+  margin-top: 61px;
 }
 
 .img-1 {
@@ -85,6 +120,14 @@ section {
 
 .img-2 {
   background-image: url(../PNG/Rectangle_2.png);
+}
+
+section:nth-child(2) h2 {
+  color: #4a4a4a;
+}
+
+section:nth-child(2) .btn-link {
+  color: #6455ff;
 }
 
 .section-gradient {
@@ -99,13 +142,17 @@ section {
   color: #fff;
 }
 
+.section-gradient .btn-link {
+  color: #fff;
+}
+
 section.section-last {
   padding-top: 93px;
   padding-bottom: 93px;
   text-align: center;
 }
 
-.circle, .circle-1, .circle-2, .circle-3 {
+.card .circle, .card .circle-1, .card .circle-2, .card .circle-3 {
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -119,16 +166,351 @@ section.section-last {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  -webkit-transform: translateY(20px) scale(0.95);
+          transform: translateY(20px) scale(0.95);
 }
 
-.circle-1 {
+.card.active .circle, .card.active .circle-1, .card.active .circle-2, .card.active .circle-3 {
+  -webkit-filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+  -webkit-transform: translateY(0) scale(1);
+          transform: translateY(0) scale(1);
+}
+
+.card .circle-1 {
   background: linear-gradient(89.39deg, #ff00ff 0.53%, #6455ff 99.49%);
 }
 
-.circle-2 {
+.card .circle-2 {
   background: linear-gradient(89.39deg, #00ffff 0.53%, #6455ff 99.49%);
 }
 
-.circle-3 {
+.card .circle-3 {
   background: linear-gradient(89.39deg, #0e0066 0.53%, #6455ff 99.49%);
+}
+
+.btn, .btn-fill, .btn-link {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  display: block;
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  margin-bottom: 31px;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.btn-fill {
+  background-color: #00ffff;
+  color: #0e0066;
+  font-size: 18px;
+  padding: 11px 33px;
+  -webkit-box-shadow: 1px 3px 10px rgba(0, 255, 255, 0);
+          box-shadow: 1px 3px 10px rgba(0, 255, 255, 0);
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-fill:hover {
+  -webkit-box-shadow: 1px 0px 10px cyan;
+          box-shadow: 1px 0px 10px cyan;
+}
+
+.btn-link {
+  color: #00ffff;
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.btn-smaller, .btn-turquoise, .btn-purple, .btn-pink {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 9px 20px;
+  width: 138px;
+  font-size: 16px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  margin-bottom: 31px;
+  color: #fff;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  cursor: pointer;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.btn-turquoise {
+  color: #0e0066;
+  background-color: #00ffff;
+  -webkit-box-shadow: 1px 3px 10px rgba(0, 255, 255, 0);
+          box-shadow: 1px 3px 10px rgba(0, 255, 255, 0);
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-turquoise:hover {
+  -webkit-box-shadow: 1px 0px 10px cyan;
+          box-shadow: 1px 0px 10px cyan;
+}
+
+.btn-purple {
+  background-color: #6455ff;
+  -webkit-box-shadow: 1px 3px 10px rgba(99, 85, 255, 0);
+          box-shadow: 1px 3px 10px rgba(99, 85, 255, 0);
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-purple:hover {
+  -webkit-box-shadow: 1px 0px 10px rgba(99, 85, 255, 0.801);
+          box-shadow: 1px 0px 10px rgba(99, 85, 255, 0.801);
+}
+
+.btn-purple:hover {
+  color: #fff;
+}
+
+.btn-pink {
+  background-color: #ff00ffd3;
+  -webkit-box-shadow: 1px 3px 10px rgba(255, 0, 255, 0);
+          box-shadow: 1px 3px 10px rgba(255, 0, 255, 0);
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn-pink:hover {
+  -webkit-box-shadow: 1px 0px 10px rgba(255, 0, 255, 0.829);
+          box-shadow: 1px 0px 10px rgba(255, 0, 255, 0.829);
+}
+
+.btn-pink:hover {
+  color: #fff;
+}
+
+@media screen and (min-width: 761px) {
+  #hero {
+    padding-bottom: 150px;
+    padding-top: 100px;
+  }
+  #hero .text-box {
+    max-width: 500px;
+  }
+  #hero .text-box p {
+    font-size: 16px;
+    text-align: left;
+    max-width: 400px;
+  }
+  #hero h1 {
+    text-align: left;
+    font-size: 65px;
+    line-height: 68px;
+    margin-bottom: 20px;
+  }
+  #hero .wrapper {
+    position: relative;
+  }
+  #hero .bg-image {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    min-width: 70%;
+    max-width: 720px;
+    padding-bottom: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    background-image: url("../PNG/Illustration.png");
+  }
+  .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .btn-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .btn-box .btn-fill {
+    margin-left: 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+  .btn-box .btn-link {
+    margin-left: 0px;
+    margin-bottom: 0;
+  }
+  .text-box {
+    width: 50%;
+  }
+  .img, .bg-image, .img-1, .img-2 {
+    width: 41%;
+    padding-bottom: 29%;
+    margin-top: 0;
+  }
+  .separator {
+    display: none;
+  }
+  section:not(#hero) {
+    padding-top: 47px;
+    padding-bottom: 47px;
+  }
+  .section-gradient .wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
+  .card {
+    width: 33%;
+    padding: 2%;
+  }
+  .card:first-child {
+    margin-left: -2%;
+  }
+  .card:last-child {
+    margin-right: -2%;
+  }
+}
+
+@media screen and (min-width: 420px) and (max-width: 768px) {
+  .wrapper {
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 980px) {
+  .wrapper {
+    max-width: 700px;
+  }
+  #hero .bg-image {
+    min-width: 50%;
+    background-image: url("../PNG/Illustration_Mobile.png");
+  }
+  #hero h1 {
+    font-size: 52px;
+  }
+}
+
+@media screen and (min-width: 981px) and (max-width: 1320px) {
+  .wrapper {
+    max-width: 970px;
+  }
+}
+
+@media screen and (min-width: 1321px) and (max-width: 1600px) {
+  .wrapper {
+    max-width: 1040px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  #hero .bg-image {
+    min-width: 60%;
+    background-image: url("../PNG/Illustration.png");
+  }
+  .wrapper {
+    max-width: 1270px;
+  }
+}
+
+.ripple {
+  position: relative !important;
+  overflow: hidden;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  z-index: 2;
+}
+
+.ripple span {
+  background: white !important;
+  display: block !important;
+  position: absolute !important;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  -webkit-animation: ripple 0.5s linear infinite;
+          animation: ripple 0.5s linear infinite;
+  pointer-events: none;
+  border-radius: 10%;
+  z-index: 100;
+}
+
+@-webkit-keyframes ripple {
+  0% {
+    opacity: 0.6;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 900px;
+    height: 300px;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0.6;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 900px;
+    height: 300px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices for retina display purpouse
+  * Icons were broken sho i didnt include them
+  */
+  .bg-image {
+    background-image: url("../PNG/Illustration_Mobile@2x.png");
+  }
+  .img-1 {
+    background-image: url(../PNG/Rectangle_1_2x.png);
+  }
+  .img-2 {
+    background-image: url(../PNG/Rectangle_2_2x.png);
+  }
+  @media screen and (min-width: 768px) {
+    .bg-image {
+      background-image: url("../PNG/Illustration@2x.png");
+    }
+  }
 }

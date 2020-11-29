@@ -6,7 +6,13 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif;
 }
-
+a,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: rgb(29, 26, 26);
+}
 h1,
 h2,
 h3,
@@ -26,20 +32,37 @@ h2 {
 p {
   font-size: 18px;
   font-weight: 400;
+  margin-bottom: 24px;
 }
 
 .wrapper {
   padding-left: 16px;
   padding-right: 16px;
+  margin: 0 auto;
 }
-
+.separator {
+  width: 100%;
+  max-width: 187px;
+  height: 1px;
+  background: #ddd;
+  margin: 50px auto 37px;
+}
 @import "_variables.scss";
+@import "_mixins.scss";
 
 #page {
   background: $lightGrey;
 }
 .bg-image {
-  text-align: center;
+  @extend .img;
+  background-image: url("../PNG/Illustration_Mobile.png");
+}
+@media screen and (max-width: 420px) {
+  #hero {
+    .bg-image {
+      padding-bottom: 80%;
+    }
+  }
 }
 section {
   padding-top: 38px;
@@ -59,6 +82,18 @@ section {
     color: white;
     text-align: center;
     font-weight: 300;
+    margin-bottom: 40px;
+    font-size: 20px;
+  }
+
+  .btn-link {
+    color: $turquoise;
+  }
+}
+
+section:not(#hero) {
+  .btn-link {
+    margin-left: 0;
   }
 }
 
@@ -68,9 +103,10 @@ section {
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow($shadow);
   overflow: hidden;
   background-position: center center;
+  margin-top: 61px;
 }
 
 .img-1 {
@@ -82,13 +118,23 @@ section {
   @extend .img;
   background-image: url(../PNG/Rectangle_2.png);
 }
-
+section:nth-child(2) {
+  h2 {
+    color: $darkGrey;
+  }
+  .btn-link {
+    color: $purple;
+  }
+}
 .section-gradient {
   background: $gradientLight;
   h2 {
     color: #fff;
   }
   p {
+    color: #fff;
+  }
+  .btn-link {
     color: #fff;
   }
 }
@@ -99,29 +145,227 @@ section.section-last {
   padding-bottom: 93px;
   text-align: center;
 }
-.circle {
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.card {
+  .circle {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //filter: drop-shadow($shadow);
+    transition: 0.3s all ease;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  &.active .circle {
+    filter: drop-shadow($shadow);
+    transform: translateY(0) scale(1);
+  }
+
+  .circle-1 {
+    @extend .circle;
+    background: $gradiendCircle1;
+  }
+
+  .circle-2 {
+    @extend .circle;
+    background: $gradiendCircle2;
+  }
+
+  .circle-3 {
+    @extend .circle;
+    background: $gradiendCircle3;
+  }
 }
 
-.circle-1 {
-  @extend .circle;
-  background: $gradiendCircle1;
+@import "_buttons.scss";
+
+@media screen and (min-width: 761px) {
+  #hero {
+    .text-box {
+      max-width: 500px;
+      p {
+        font-size: 16px;
+        text-align: left;
+        max-width: 400px;
+      }
+    }
+    padding-bottom: 150px;
+    padding-top: 100px;
+
+    h1 {
+      text-align: left;
+      font-size: 65px;
+      line-height: 68px;
+      margin-bottom: 20px;
+    }
+    .wrapper {
+      position: relative;
+    }
+    .bg-image {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      min-width: 70%;
+      max-width: 720px;
+      padding-bottom: 50%;
+      transform: translateY(-50%);
+      background-image: url("../PNG/Illustration.png");
+    }
+  }
+  .wrapper {
+    @include flex();
+  }
+
+  .btn-box {
+    @include flex();
+    .btn-fill {
+      margin-left: 0;
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+    .btn-link {
+      margin-left: 0px;
+      margin-bottom: 0;
+    }
+  }
+
+  .text-box {
+    width: 50%;
+  }
+  .img {
+    width: 41%;
+    padding-bottom: 29%;
+    margin-top: 0;
+  }
+  .separator {
+    display: none;
+  }
+
+  section:not(#hero) {
+    padding-top: 47px;
+    padding-bottom: 47px;
+  }
+
+  .section-gradient {
+    .wrapper {
+      flex-direction: row-reverse;
+    }
+  }
+  .section-last {
+  }
+  .card {
+    width: 33%;
+    padding: 2%;
+  }
+  .card:first-child {
+    margin-left: -2%;
+  }
+  .card:last-child {
+    margin-right: -2%;
+  }
 }
 
-.circle-2 {
-  @extend .circle;
-
-  background: $gradiendCircle2;
+@media screen and (min-width: 420px) and (max-width: 768px) {
+  .wrapper {
+    max-width: 400px;
+  }
 }
 
-.circle-3 {
-  @extend .circle;
+@media screen and (min-width: 769px) and (max-width: 980px) {
+  .wrapper {
+    max-width: 700px;
+  }
+  #hero {
+    .bg-image {
+      min-width: 50%;
+      background-image: url("../PNG/Illustration_Mobile.png");
+    }
+    h1 {
+      font-size: 52px;
+    }
+  }
+}
 
-  background: $gradiendCircle3;
+@media screen and (min-width: 981px) and (max-width: 1320px) {
+  .wrapper {
+    max-width: 970px;
+  }
+}
+
+@media screen and (min-width: 1321px) and (max-width: 1600px) {
+  .wrapper {
+    max-width: 1040px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  #hero {
+    .bg-image {
+      min-width: 60%;
+      background-image: url("../PNG/Illustration.png");
+    }
+  }
+  .wrapper {
+    max-width: 1270px;
+  }
+}
+
+.ripple {
+  position: relative !important;
+  overflow: hidden;
+  appearance: none;
+  z-index: 2;
+
+  span {
+    background: white !important;
+    display: block !important;
+    position: absolute !important;
+    transform: translateX(-50%) translateY(-50%);
+    animation: ripple 0.5s linear infinite;
+    pointer-events: none;
+    border-radius: 10%;
+    z-index: 100;
+  }
+}
+@keyframes ripple {
+  0% {
+    opacity: 0.6;
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    opacity: 0;
+    width: 900px;
+    height: 300px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices for retina display purpouse
+  * Icons were broken sho i didnt include them
+  */
+  .bg-image {
+    @extend .img;
+    background-image: url("../PNG/Illustration_Mobile@2x.png");
+  }
+
+  .img-1 {
+    @extend .img;
+    background-image: url(../PNG/Rectangle_1_2x.png);
+  }
+
+  .img-2 {
+    @extend .img;
+    background-image: url(../PNG/Rectangle_2_2x.png);
+  }
+
+  @media screen and (min-width: 768px) {
+    .bg-image {
+      background-image: url("../PNG/Illustration@2x.png");
+    }
+  }
 }
